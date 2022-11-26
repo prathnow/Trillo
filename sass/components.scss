@@ -320,9 +320,42 @@
 .gallery {
     display: flex;
     
+    &__item {
+        position: relative;
+        overflow: hidden;
+
+        & > * {
+            transition: all 0.3s;
+        }
+
+        @media only screen and (max-width: $bp-smallest) {
+            margin: 2rem;
+        }
+    }
+
     &__photo {
         width: 100%;
         display: block;
+    }
+
+    &__caption {
+        font-size: 2rem;
+        color: var(--color-primary-light);
+        font-weight: 800;
+        cursor: default;
+        position: absolute;
+        left: 0;
+        top: -100%;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to top, var(--bg-color-primary-dark) 0, var(--bg-color-grey-dark-1) 50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__item:hover &__caption {
+        top: 0;
     }
 }
 
